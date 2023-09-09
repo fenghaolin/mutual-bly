@@ -1,0 +1,22 @@
+name: C++ CI Build
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install Dependencies
+      run: |
+        sudo apt update
+        sudo apt install -y libgsl-dev clang
+
+    - name: Build
+      run: |
+        clang++ -I ./include/eigen -I /usr/include/gsl -std=c++11 Main.cpp -o bin/Mutual-BLY /usr/lib/x86_64-linux-gnu/libgsl.so /usr/lib/x86_64-linux-gnu/libgslcblas.so
+
+    - name: Run
+      run: ./bin/Mutual-BLY
