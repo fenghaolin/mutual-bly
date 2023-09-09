@@ -1,4 +1,4 @@
-# This is forked from 
+# This is forked from [original repo](https://github.com/laseryuan/mutual-bly)
 - The source codes are the same as the [original repo](https://github.com/laseryuan/mutual-bly) (commit 95c935b997576445fb6d3f9b12f2e1af4bd5494f)
 - Only the README.md is modified to better document the steps to build and run it.
 - A `.gitignore` file is added to ignore the built executable file `bin/Mutual-BLY`
@@ -39,10 +39,17 @@ git clone https://github.com/fenghaolin/mutual-bly.git mutual-bly-OR2023 && cd m
 
 - Step 2. Buildi the executable file `Mutual-BLY` and put it into `bin`:
 ```
-clang++ -I ./include/eigen -I /usr/include/gsl \
-    -std=c++11 Main.cpp -o bin/Mutual-BLY \ 
-    /usr/lib/x86_64-linux-gnu/libgsl.so /usr/lib/x86_64-linux-gnu/libgslcblas.so
+clang++ -I ./include/eigen -I /usr/include/gsl -std=c++11 Main.cpp -o bin/Mutual-BLY /usr/lib/x86_64-linux-gnu/libgsl.so /usr/lib/x86_64-linux-gnu/libgslcblas.so
 ```
+
+## Note by H. Feng
+1. This repo is forked from [laseryuan/mutual-bly](https://github.com/laseryuan/mutual-bly) which is the code for the paper [Bensoussan, Yuan, and Liu (2023)](#BLY).
+2. Bensoussan, Yuan, and Liu (2023) is a paper published in *Operations Research*, a top journal in the field of operations research and management science. It studies a special case of the two-band impulse control of Brownian motion. It benchmarks their method against the one proposed by [Feng and Muthuraman (2010)](#FM).
+3. The code is written in C++ by the authors of [Bensoussan, Yuan, and Liu (2023)](#BLY). Without any modification of the source files, the project can be built successfully using the above `clang` command with warning message about with the style not following the requirements of ISO C++. However, if one wants to replace the clang compiler with the g++ one, it will fail with an error message. This note is a reminder for anyone interested in building and running the code.
+
+## References
+<a name="BLY"> [1] Bensoussan, A., Liu, J. J., & Yuan, J. (2023). A Splitting Method for Band Control of Brownian Motion: With Application to Mutual Reserve Optimization. Operations Research.</a>
+<a name="FM"> [2] Feng, H., & Muthuraman, K. (2010). A computational method for stochastic impulse control problems. Mathematics of Operations Research, 35(4), 830-850.</a>
 
 # In below is the README.md of the [original](https://github.com/laseryuan/mutual-bly) repo 
 ## Setup
