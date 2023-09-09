@@ -1,7 +1,10 @@
 name: C++ CI Build
 on:
+  workflow_dispatch:
   push:
     branches: [ master ]
+    paths-ignore:
+      - 'output/benchmark.txt'  # Prevents workflow loop
 
 jobs:
   build:
@@ -20,3 +23,11 @@ jobs:
 
     - name: Run
       run: ./bin/Mutual-BLY
+
+    - name: Commit and Push
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add output/benchmark.txt
+        git commit -m "Update benchmark.txt after GitHub Actions run"
+        git push
