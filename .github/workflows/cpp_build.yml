@@ -1,10 +1,11 @@
 name: C++ CI Build
 on:
   workflow_dispatch:
-  push:
-    branches: [ master ]
-    paths-ignore:
-      - 'output/benchmark.txt'  # Prevents workflow loop
+# The following are commented to avoid running for every push
+#  push:
+#    branches: [ master ]
+#    paths-ignore:
+#      - 'output/benchmark.txt'  # Prevents workflow loop
 
 jobs:
   build:
